@@ -1,104 +1,97 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-	final String assetImage;
+	final String imagePath;
 	final String title;
-	final String subtitle;
+	final String description;
+	final double borderRadius;
 	final double? width;
-	final double height;
-	final VoidCallback? onTap;
 
 	const CustomCard({
-		super.key,
-		required this.assetImage,
+		Key? key,
+		required this.imagePath,
 		required this.title,
-		required this.subtitle,
+		required this.description,
+		this.borderRadius = 12.0,
 		this.width,
-		this.height = 320, // Increased default height
-		this.onTap,
-	});
+	}) : super(key: key);
 
 	@override
 	Widget build(BuildContext context) {
-		// Get screen size for responsive calculations
-		final screenSize = MediaQuery.of(context).size;
-		final isSmallScreen = screenSize.width < 600;
-
-		// Calculate responsive font sizes
-		final titleFontSize = isSmallScreen ? 16.0 : 18.0;
-		final subtitleFontSize = isSmallScreen ? 12.0 : 14.0;
-
-		return GestureDetector(
-			onTap: onTap,
-			child: Container(
-				width: width ?? screenSize.width * 0.9, // Default to 90% of screen width if not specified
-				height: height,
-				decoration: BoxDecoration(
-					color: Colors.white,
-					borderRadius: BorderRadius.circular(16),
-					boxShadow: [
-						BoxShadow(
-							color: Colors.black.withOpacity(0.1),
-							blurRadius: 8,
-							offset: const Offset(0, 2),
-						),
-					],
-				),
-				child: LayoutBuilder(
-					builder: (context, constraints) {
-						return Column(
-							crossAxisAlignment: CrossAxisAlignment.center,
-							children: [
-								Expanded(
-								  flex: 5, // Increased flex for image portion
-								  child: ClipRRect(
-									borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-									child: Image.asset(
-									  assetImage,
-									  fit: BoxFit.contain,
-									  width: constraints.maxWidth * 0.8, // Slightly increased width
-									  height: constraints.maxHeight * 0.45, // Increased height proportion
-									),
-								  ),
+		final screenWidth = MediaQuery.of(context).size.width;
+		final cardWidth = width ?? screenWidth * 0.35;
+		final cardHeight = cardWidth * 1.1;
+		
+		return SizedBox(
+			width: cardWidth,
+			child: Column(
+				crossAxisAlignment: CrossAxisAlignment.start,
+				children: [
+					Container(
+						decoration: BoxDecoration(
+							color: Colors.white,
+							borderRadius: BorderRadius.circular(borderRadius),
+							boxShadow: [
+								BoxShadow(
+									color: Colors.black.withOpacity(0.1),
+									blurRadius: 4,
+									offset: const Offset(0, 2),
 								),
-								Expanded(
-								  flex: 4,
-
-									child: Padding(
-										padding: EdgeInsets.all(constraints.maxWidth * 0.04), // Responsive padding
-										child: Column(
-											crossAxisAlignment: CrossAxisAlignment.start,
-											children: [
-												Text(
-													title,
-													style: TextStyle(
-														fontSize: titleFontSize,
-														fontWeight: FontWeight.bold,
-														fontFamily: 'Exo2',
-														color: Colors.black87,
-													),
-													maxLines: 1,
-													overflow: TextOverflow.ellipsis,
-												),
-												SizedBox(height: constraints.maxHeight * 0.02),
-												Text(
-													subtitle,
-													style: TextStyle(
-														fontSize: subtitleFontSize,
-														fontFamily: 'Exo2',
-														color: Colors.black54,
-													),
-													maxLines: 2,
-													overflow: TextOverflow.ellipsis,
-												),
-											],
+							],
+						),
+						child: Column(
+							children: [
+								ClipRRect(
+									borderRadius: BorderRadius.only(
+										topLeft: Radius.circular(borderRadius),
+										topRight: Radius.circular(borderRadius),
+									),
+									child: Image.asset(
+										imagePath,
+										height: cardHeight * 0.45,
+										width: cardWidth,
+										fit: BoxFit.contain,
+									),
+								),
+								Container(
+									width: cardWidth,
+									decoration: BoxDecoration(
+										color: Colors.black,
+										borderRadius: BorderRadius.only(
+											bottomLeft: Radius.circular(borderRadius),
+											bottomRight: Radius.circular(borderRadius),
 										),
+									),
+									padding: EdgeInsets.symmetric(
+										horizontal: cardWidth * 0.06,
+										vertical: cardHeight * 0.02,
+									),
+									child: Text(
+										description,
+										style: TextStyle(
+											color: Colors.white,
+											fontSize: cardWidth * 0.06,
+										),
+										maxLines: 2,
+										overflow: TextOverflow.ellipsis,
 									),
 								),
 							],
-						);
-					}
-				),
+						),
+					),
+					Padding(
+						padding: EdgeInsets.all(cardWidth * 0.03),
+						child: Text(
+							title,
+							style: TextStyle(
+								fontSize: cardWidth * 0.07,
+								fontWeight: FontWeight.bold,
+							),
+							maxLines: 1,
+							overflow: TextOverflow.ellipsis,
+						),
+					),
+				],
 			),
 		);
 	}

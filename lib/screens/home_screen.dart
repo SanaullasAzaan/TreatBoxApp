@@ -5,6 +5,7 @@ import 'package:treatboxrefurbisshed/widgets/custom_search_bar.dart';
 import 'package:treatboxrefurbisshed/widgets/icon_container.dart';
 import 'package:treatboxrefurbisshed/widgets/promotional_banner.dart';
 import 'package:treatboxrefurbisshed/widgets/custom_bottom_nav_bar.dart';
+import 'package:treatboxrefurbisshed/widgets/custom_card.dart';
 import 'package:treatboxrefurbisshed/screens/categories_screen.dart';
 
 
@@ -155,9 +156,38 @@ class _HomeScreenState extends State<HomeScreen> {
                         title: 'Breakfast',
                         ),
                     ],
+                    ),
                   ),
-                ),
-              ],
+                    const SizedBox(height: 24),
+                    SizedBox(
+                    height: 220, // Reduced height from 280 to 220
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: const [
+                      CustomCard(
+                        imagePath: 'assets/images/b1.png',
+                        title: 'Beverages',
+                        description: 'From ₹ 99',
+                        width: 160, // Reduced from 200 to 160
+                      ),
+                      SizedBox(width: 12), // Reduced spacing from 16 to 12
+                      CustomCard(
+                        imagePath: 'assets/images/categories/burger.png',
+                        title: 'Cookies',
+                        description: 'From ₹ 99',
+                        width: 160,
+                      ),
+                      SizedBox(width: 12),
+                      CustomCard(
+                        imagePath: 'assets/images/p1.png',
+                        title: 'Pizza',
+                        description: 'From ₹ 99',
+                        width: 160,
+                      ),
+                    ],
+                    ),
+                  ),
+                  ],
             ),
           ),
         ),

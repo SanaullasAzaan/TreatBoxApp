@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:treatboxrefurbisshed/widgets/custom_search_bar.dart';
-import 'package:treatboxrefurbisshed/widgets/custom_card.dart';
 import 'package:treatboxrefurbisshed/widgets/custom_bottom_nav_bar.dart';
 import 'package:treatboxrefurbisshed/widgets/custom_title_row.dart';
 
@@ -142,21 +141,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         itemCount: categoryData.length,
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            child: SizedBox(
-                              width: 160,
-                              child: CustomCard(
-                                assetImage: categoryData[index]['assetImage']!,
-                                title: categoryData[index]['title']!,
-                                subtitle: categoryData[index]['subtitle']!,
-                                onTap: () {
-                                  print('${categoryData[index]['title']} selected');
-                                },
-                              ),
-                              
-                            ),
-                          );
+                        
                         },
                         ),
                       ),
