@@ -12,15 +12,15 @@ class CustomCard extends StatelessWidget {
 		required this.imagePath,
 		required this.title,
 		required this.description,
-		this.borderRadius = 12.0,
+		this.borderRadius = 10.0,
 		this.width,
 	}) : super(key: key);
 
 	@override
 	Widget build(BuildContext context) {
 		final screenWidth = MediaQuery.of(context).size.width;
-		final cardWidth = width ?? screenWidth * 0.35;
-		final cardHeight = cardWidth * 1.1;
+		final cardWidth = width ?? screenWidth * 0.4;
+		final cardHeight = cardWidth * 1.2;
 		
 		return SizedBox(
 			width: cardWidth,
@@ -48,8 +48,8 @@ class CustomCard extends StatelessWidget {
 									),
 									child: Image.asset(
 										imagePath,
-										height: cardHeight * 0.45,
-										width: cardWidth,
+										height: cardHeight * 0.50,
+										width: cardWidth* 0.50,
 										fit: BoxFit.contain,
 									),
 								),
@@ -63,8 +63,8 @@ class CustomCard extends StatelessWidget {
 										),
 									),
 									padding: EdgeInsets.symmetric(
-										horizontal: cardWidth * 0.06,
-										vertical: cardHeight * 0.02,
+										horizontal: cardWidth * 0.1,
+										vertical: cardHeight * 0.01,
 									),
 									child: Text(
 										description,
@@ -72,7 +72,7 @@ class CustomCard extends StatelessWidget {
 											color: Colors.white,
 											fontSize: cardWidth * 0.06,
 										),
-										maxLines: 2,
+										maxLines: 1,
 										overflow: TextOverflow.ellipsis,
 									),
 								),
@@ -80,7 +80,7 @@ class CustomCard extends StatelessWidget {
 						),
 					),
 					Padding(
-						padding: EdgeInsets.all(cardWidth * 0.03),
+						padding: EdgeInsets.all(cardWidth * 0.01),
 						child: Text(
 							title,
 							style: TextStyle(

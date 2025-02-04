@@ -10,7 +10,7 @@ class CategoryIcon extends StatelessWidget {
 		super.key,
 		required this.imagePath,  // Changed from icon
 		required this.title,
-		this.imageSize = 40.0,  // Adjusted default size
+		this.imageSize = 50.0,  // Adjusted default size
 		this.onTap,
 	});
 
@@ -55,7 +55,7 @@ class CategoryIcon extends StatelessWidget {
 								fontSize: 12,
 								color: Colors.black87,
 								fontFamily: 'Exo2',
-								fontWeight: FontWeight.w500,
+								fontWeight: FontWeight.w600,
 							),
 							textAlign: TextAlign.center,
 						),

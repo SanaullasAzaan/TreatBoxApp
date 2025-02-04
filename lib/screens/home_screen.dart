@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 16),
                 
-                const SizedBox(height: 16),
+                
                 SizedBox(
                   height: 90,
                   child: ListView(
@@ -160,33 +160,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                     const SizedBox(height: 24),
                     SizedBox(
-                    height: 220, // Reduced height from 280 to 220
-                    child: ListView(
+                      height: 260,
+                      child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: const [
-                      CustomCard(
-                        imagePath: 'assets/images/b1.png',
-                        title: 'Beverages',
-                        description: 'From ₹ 99',
-                        width: 160, // Reduced from 200 to 160
-                      ),
-                      SizedBox(width: 12), // Reduced spacing from 16 to 12
-                      CustomCard(
-                        imagePath: 'assets/images/categories/burger.png',
-                        title: 'Cookies',
-                        description: 'From ₹ 99',
-                        width: 160,
-                      ),
-                      SizedBox(width: 12),
-                      CustomCard(
+                        CustomCard(
                         imagePath: 'assets/images/p1.png',
                         title: 'Pizza',
                         description: 'From ₹ 99',
-                        width: 160,
+                        width: 165,
+                        ),
+                        SizedBox(width: 12),
+                        CustomCard(
+                        imagePath: 'assets/images/burgers/burger1.png',
+                        title: 'Burger',
+                        description: 'From ₹ 89',
+                        width: 165,
+                        ),
+                        SizedBox(width: 12),
+                        CustomCard(
+                        imagePath: 'assets/images/b1.png',
+                        title: 'Bevrages',
+                        description: 'From ₹ 59',
+                        width: 165,
+                        ),
+                      ],
                       ),
-                    ],
                     ),
-                  ),
                   ],
             ),
           ),
