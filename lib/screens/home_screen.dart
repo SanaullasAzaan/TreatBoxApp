@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treatboxrefurbisshed/screens/pizza_screen.dart';
 import 'package:treatboxrefurbisshed/widgets/asset_image_container.dart';
 import 'package:treatboxrefurbisshed/widgets/category_icon.dart';
 import 'package:treatboxrefurbisshed/widgets/custom_search_bar.dart';
@@ -163,26 +164,34 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 260,
                       child: ListView(
                       scrollDirection: Axis.horizontal,
-                      children: const [
+                        children: [
                         CustomCard(
-                        imagePath: 'assets/images/p1.png',
-                        title: 'Pizza',
-                        description: 'From ₹ 99',
-                        width: 165,
+                          imagePath: 'assets/images/p1.png',
+                          title: 'Pizza',
+                          description: 'From ₹ 99',
+                          width: 165,
+                          onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                            builder: (context) => const PizzaScreen(),
+                            ),
+                          );
+                          },
                         ),
-                        SizedBox(width: 12),
-                        CustomCard(
-                        imagePath: 'assets/images/burgers/burger1.png',
-                        title: 'Burger',
-                        description: 'From ₹ 89',
-                        width: 165,
+                        const SizedBox(width: 12),
+                        const CustomCard(
+                          imagePath: 'assets/images/burgers/burger1.png',
+                          title: 'Burger',
+                          description: 'From ₹ 89',
+                          width: 165,
                         ),
-                        SizedBox(width: 12),
-                        CustomCard(
-                        imagePath: 'assets/images/b1.png',
-                        title: 'Bevrages',
-                        description: 'From ₹ 59',
-                        width: 165,
+                        const SizedBox(width: 12),
+                        const CustomCard(
+                          imagePath: 'assets/images/b1.png',
+                          title: 'Bevrages',
+                          description: 'From ₹ 59',
+                          width: 165,
                         ),
                       ],
                       ),

@@ -6,6 +6,7 @@ class CustomCard extends StatelessWidget {
 	final String description;
 	final double borderRadius;
 	final double? width;
+	final VoidCallback? onTap;
 
 	const CustomCard({
 		Key? key,
@@ -14,6 +15,7 @@ class CustomCard extends StatelessWidget {
 		required this.description,
 		this.borderRadius = 10.0,
 		this.width,
+		this.onTap,
 	}) : super(key: key);
 
 	@override
@@ -22,7 +24,9 @@ class CustomCard extends StatelessWidget {
 		final cardWidth = width ?? screenWidth * 0.4;
 		final cardHeight = cardWidth * 1.2;
 		
-		return SizedBox(
+		return GestureDetector(
+			onTap: onTap,
+			child: SizedBox(
 			width: cardWidth,
 			child: Column(
 				crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,6 +97,7 @@ class CustomCard extends StatelessWidget {
 					),
 				],
 			),
-		);
+		),
+	);
 	}
 }
